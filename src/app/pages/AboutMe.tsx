@@ -2,22 +2,17 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "mot
 import { useRef, useState, useEffect } from "react";
 import { PlayCircle, FastForward, Rewind, Pause, Volume2, ExternalLink, Download, Maximize, X, FileText } from "lucide-react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import myPhoto from "/images/7eddaca9fa6e45c6f241243ef45776bddded8042.png";
+import myPhoto from "/images/profile.png";
 
-// --- MOCK SPOTIFY API ---
-// In a production environment, replace this with actual Spotify Web API calls:
-// 1. Authenticate via OAuth 2.0 to get an access token.
-// 2. GET https://api.spotify.com/v1/me/top/tracks or GET https://api.spotify.com/v1/playlists/{playlist_id}
+// Keep mock as initial loading state
 const SPOTIFY_API_MOCK_DATA = [
-  { id: "1", title: "Concrete Mathematics", artist: "The Grid", duration: "04:12", cover: "https://images.unsplash.com/photo-1667071271364-12e6415a2255?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHRleHR1cmUlMjBkYXJrJTIwdmlueWx8ZW58MXx8fHwxNzczNDcyNzkwfDA&ixlib=rb-4.1.0&q=80&w=1080" },
-  { id: "2", title: "Monochrome Echoes", artist: "Void Structure", duration: "03:45", cover: "https://images.unsplash.com/photo-1758981187327-ff3429577b79?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMGJsYWNrJTIwYW5kJTIwd2hpdGUlMjBkYXJrfGVufDF8fHx8MTc3MzQ3MjU4M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
-  { id: "3", title: "Structural Integrity", artist: "Frame.work", duration: "05:22", cover: "https://images.unsplash.com/photo-1663343010965-f494f04239df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicnV0YWxpc3QlMjBjb25jcmV0ZSUyMGFyY2hpdGVjdHVyZSUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MXx8fHwxNzczNDcyNTgzfDA&ixlib=rb-4.1.0&q=80&w=1080" },
-  { id: "4", title: "Synthetic Shadows", artist: "Dark Room", duration: "02:58", cover: "https://images.unsplash.com/photo-1735948055457-8d816fb80a87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwZGFyayUyMHdvcmtzcGFjZSUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MXx8fHwxNzczNDcyNTgzfDA&ixlib=rb-4.1.0&q=80&w=1080" },
-  { id: "5", title: "Absolute Zero", artist: "Kelvin", duration: "06:10", cover: "https://images.unsplash.com/photo-1767714874597-171a438ad0ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwcG9ydHJhaXQlMjBtb2Rlcm4lMjBtYW4lMjBtaW5pbWFsfGVufDF8fHx8MTc3MzQ3MjU4M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
+  { id: "1", title: "Concrete Mathematics", artist: "The Grid", duration: "04:12", cover: "https://images.unsplash.com/photo-1667071271364-12e6415a2255?q=80&w=1080", previewUrl: "" },
+  { id: "2", title: "Monochrome Echoes", artist: "Void Structure", duration: "03:45", cover: "https://images.unsplash.com/photo-1758981187327-ff3429577b79?q=80&w=1080", previewUrl: "" },
 ];
 
 export function AboutMe() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   
   // Parallax for hero
   const { scrollYProgress: heroProgress } = useScroll({
@@ -73,40 +68,114 @@ export function AboutMe() {
       window.URL.revokeObjectURL(blobUrl);
     } catch (err) {
       console.error("Download failed", err);
-      // Fallback open in new tab
       window.open(url, '_blank');
     }
   };
 
   const hobbies = [
-    { name: "Photography", img: "https://images.unsplash.com/photo-1769287429003-2a7e8ebee0d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYW1lcmElMjBsZW5zJTIwbW9ub2Nocm9tZSUyMGRhcmt8ZW58MXx8fHwxNzczNDcyNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080", desc: "Capturing light, shadow, and geometry." },
-    { name: "Espresso", img: "https://images.unsplash.com/photo-1615464637805-16154b4d5ea1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlc3ByZXNzbyUyMHBvdXIlMjBkYXJrJTIwbWluaW1hbHxlbnwxfHx8fDE3NzM0NzI3ODl8MA&ixlib=rb-4.1.0&q=80&w=1080", desc: "Dialing in the perfect extraction." },
-    { name: "Literature", img: "https://images.unsplash.com/photo-1557752370-a545ea73b64f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxib29rcyUyMGFic3RyYWN0JTIwbWluaW1hbCUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MXx8fHwxNzczNDcyNzkwfDA&ixlib=rb-4.1.0&q=80&w=1080", desc: "Sci-fi, architecture, and design theory." },
+    { name: "Photography", img: "https://images.unsplash.com/photo-1769287429003-2a7e8ebee0d9?q=80&w=1080", desc: "Capturing light, shadow, and geometry." },
+    { name: "Espresso", img: "https://images.unsplash.com/photo-1615464637805-16154b4d5ea1?q=80&w=1080", desc: "Dialing in the perfect extraction." },
+    { name: "Literature", img: "https://images.unsplash.com/photo-1557752370-a545ea73b64f?q=80&w=1080", desc: "Sci-fi, architecture, and design theory." },
   ];
 
   // Spotify Player State
+  const [tracks, setTracks] = useState(SPOTIFY_API_MOCK_DATA);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const currentTrack = SPOTIFY_API_MOCK_DATA[currentTrackIndex];
-
-  // Auto-play progress bar mock
   const [progress, setProgress] = useState(0);
+  const currentTrack = tracks[currentTrackIndex];
+
+  // Fetch real Spotify Data
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setProgress((prev) => (prev >= 100 ? 0 : prev + 0.5));
-      }, 1000);
+    const fetchSpotifyData = async () => {
+      try {
+        const clientId = '94c4d0afbcf045c7a6a6fafad5b89f50';
+        const clientSecret = '584b24da085a4420bd48ae63ea7dc2fc';
+        
+        const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
+          },
+          body: 'grant_type=client_credentials'
+        });
+        
+        const tokenData = await tokenResponse.json();
+        const token = tokenData.access_token;
+
+        const playlistId = '54qSVmeuJrYe9bvz3BVUyV'; 
+        const playlistResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=5`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        const playlistData = await playlistResponse.json();
+
+        const liveTracks = playlistData.items.map((item: any, index: number) => {
+          const track = item.track;
+          const minutes = Math.floor(track.duration_ms / 60000);
+          const seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
+          
+          return {
+            id: track.id || String(index),
+            title: track.name,
+            artist: track.artists.map((a: any) => a.name).join(', '),
+            duration: `${minutes}:${Number(seconds) < 10 ? '0' : ''}${seconds}`,
+            cover: track.album.images[0]?.url || SPOTIFY_API_MOCK_DATA[0].cover,
+            previewUrl: track.preview_url // This is the actual audio source
+          };
+        });
+
+        if (liveTracks.length > 0) {
+          setTracks(liveTracks);
+        }
+      } catch (error) {
+        console.error("System // API Fetch Failed.", error);
+      }
+    };
+
+    fetchSpotifyData();
+  }, []);
+
+  // Audio Control Logic
+  useEffect(() => {
+    if (isPlaying && currentTrack.previewUrl) {
+      if (!audioRef.current) {
+        audioRef.current = new Audio(currentTrack.previewUrl);
+      } else {
+        audioRef.current.src = currentTrack.previewUrl;
+      }
+      audioRef.current.play().catch(e => console.log("Playback blocked by browser", e));
+      
+      const updateProgress = () => {
+        if (audioRef.current) {
+          const val = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+          setProgress(val);
+        }
+      };
+
+      audioRef.current.addEventListener('timeupdate', updateProgress);
+      audioRef.current.onended = () => {
+        setIsPlaying(false);
+        setProgress(0);
+      };
+
+      return () => {
+        audioRef.current?.removeEventListener('timeupdate', updateProgress);
+      };
+    } else {
+      audioRef.current?.pause();
     }
-    return () => clearInterval(interval);
-  }, [isPlaying]);
+  }, [isPlaying, currentTrack]);
 
   const handleTrackSelect = (index: number) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
     setCurrentTrackIndex(index);
     setIsPlaying(true);
     setProgress(0);
   };
-
   return (
     <div className="bg-[#f5f5f5] text-black w-full min-h-screen relative selection:bg-black selection:text-white" ref={containerRef}>
       
@@ -393,17 +462,7 @@ export function AboutMe() {
 
       {/* --- SPOTIFY / CURRENT ROTATION (INTERACTIVE) --- */}
       <section className="py-24 md:py-40 bg-[#050505] text-white relative z-10 border-t border-white/10 overflow-hidden">
-        
-        {/* Background Grid */}
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none flex justify-between px-6 md:px-12 z-0">
-          <div className="w-[1px] h-full bg-white"></div>
-          <div className="w-[1px] h-full bg-white hidden md:block"></div>
-          <div className="w-[1px] h-full bg-white hidden lg:block"></div>
-          <div className="w-[1px] h-full bg-white"></div>
-        </div>
-
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          
           <div className="mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 border-b border-white/20 pb-8">
             <div>
               <span className="text-[10px] tracking-[0.3em] uppercase text-white/50 mb-4 flex items-center gap-4">
@@ -411,198 +470,91 @@ export function AboutMe() {
                 <div className="flex items-end gap-[2px] h-3">
                   <motion.div animate={{ height: isPlaying ? ["3px", "12px", "6px", "10px", "3px"] : "3px" }} transition={{ repeat: Infinity, duration: 1.2 }} className="w-1 bg-[#1DB954]" />
                   <motion.div animate={{ height: isPlaying ? ["8px", "4px", "12px", "5px", "8px"] : "3px" }} transition={{ repeat: Infinity, duration: 0.9 }} className="w-1 bg-[#1DB954]" />
-                  <motion.div animate={{ height: isPlaying ? ["4px", "10px", "3px", "8px", "4px"] : "3px" }} transition={{ repeat: Infinity, duration: 1.5 }} className="w-1 bg-[#1DB954]" />
                 </div>
               </span>
-              <h3 className="text-4xl md:text-6xl lg:text-7xl uppercase font-light tracking-tighter leading-[0.9]">
-                Sonic <br/><span className="italic">Architecture</span>
-              </h3>
+              <h3 className="text-4xl md:text-6xl lg:text-7xl uppercase font-light tracking-tighter leading-[0.9]">Sonic <br/><span className="italic">Architecture</span></h3>
             </div>
-            <p className="font-sans text-sm opacity-60 max-w-sm tracking-wide leading-relaxed lg:text-right">
-              Powered by Spotify Web API. The raw frequencies that drive my late-night coding sessions. Select a track to preview the rotation.
-            </p>
+            <p className="font-sans text-sm opacity-60 max-w-sm tracking-wide lg:text-right">Powered by Spotify Web API. Preview the tracks that drive my code.</p>
           </div>
 
-          {/* Bento Box Player Container */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 relative">
-            
-            {/* Main Player Module (spans 8 columns) */}
             <div className="lg:col-span-8 flex flex-col md:flex-row bg-[#0a0a0a] border border-white/20 shadow-[12px_12px_0px_rgba(0,0,0,1)] relative overflow-hidden group min-h-[380px]">
-              
-              {/* Left: Vinyl & Cover Art (1:1 ratio area) */}
               <div className="w-full md:w-1/2 p-8 border-b md:border-b-0 md:border-r border-white/20 relative flex items-center justify-center bg-black/50">
                 <div className="relative w-full max-w-[280px] aspect-square">
-                  {/* Spinning Vinyl Behind */}
-                  <motion.div 
-                    animate={{ rotate: isPlaying ? 360 : 0 }} 
-                    transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                    className="absolute top-0 right-[-20%] w-full h-full rounded-full border border-white/10 bg-[#111] flex items-center justify-center overflow-hidden z-0 shadow-[inset_0_0_40px_rgba(0,0,0,1)]"
-                  >
-                    <div className="w-[90%] h-[90%] rounded-full border border-white/5 flex items-center justify-center">
-                      <div className="w-[80%] h-[80%] rounded-full border border-white/5"></div>
-                    </div>
-                    <div className={`absolute w-[35%] h-[35%] rounded-full bg-[#1DB954] opacity-20 blur-xl transition-all duration-700 ${isPlaying ? 'scale-150 opacity-40' : 'scale-100'}`}></div>
-                    <div className="absolute w-[25%] h-[25%] rounded-full bg-black flex items-center justify-center border border-white/10">
+                  <motion.div animate={{ rotate: isPlaying ? 360 : 0 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} className="absolute top-0 right-[-20%] w-full h-full rounded-full border border-white/10 bg-[#111] flex items-center justify-center overflow-hidden z-0 shadow-[inset_0_0_40px_rgba(0,0,0,1)]">
+                    <div className="w-[25%] h-[25%] rounded-full bg-black flex items-center justify-center border border-white/10">
                       <div className="w-3 h-3 bg-[#0a0a0a] rounded-full"></div>
                     </div>
                   </motion.div>
-
-                  {/* Square Cover Art */}
                   <div className="relative z-10 w-[85%] h-[85%] mt-[7.5%] bg-black shadow-[20px_20px_40px_rgba(0,0,0,0.8)] border border-white/10 overflow-hidden">
-                    <img 
-                      src={currentTrack.cover} 
-                      alt={currentTrack.title} 
-                      className={`w-full h-full object-cover grayscale contrast-125 transition-all duration-700 ${isPlaying ? 'scale-105 grayscale-0' : 'scale-100 grayscale-[80%]'}`}
-                    />
-                    {isPlaying && (
-                      <div className="absolute inset-0 bg-[#1DB954] mix-blend-overlay opacity-20 pointer-events-none"></div>
-                    )}
+                    <img src={currentTrack.cover} alt={currentTrack.title} className={`w-full h-full object-cover grayscale transition-all duration-700 ${isPlaying ? 'scale-105 grayscale-0' : 'scale-100 grayscale-[80%]'}`} />
                   </div>
                 </div>
               </div>
 
-              {/* Right: Info & Controls */}
               <div className="w-full md:w-1/2 p-8 flex flex-col justify-between relative bg-black/60 backdrop-blur-md">
-                <div className="absolute top-0 left-0 w-full h-1 bg-white/10">
-                  <motion.div className="h-full bg-[#1DB954]" style={{ width: `${progress}%` }} />
-                </div>
-                
-                <div className="flex justify-between items-center text-[10px] tracking-[0.2em] uppercase opacity-50 mb-8 relative z-10">
-                  <span className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-[#1DB954] animate-pulse' : 'bg-white/30'}`}></span>
-                    Now Playing
-                  </span>
-                  <span className={isPlaying ? 'text-[#1DB954] font-bold opacity-100' : ''}>{isPlaying ? 'LIVE OUTPUT' : 'STANDBY'}</span>
+                <div className="flex justify-between items-center text-[10px] tracking-[0.2em] uppercase opacity-50 mb-8">
+                  <span className="flex items-center gap-2"><span className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-[#1DB954] animate-pulse' : 'bg-white/30'}`}></span>Now Playing</span>
+                  <span className={isPlaying ? 'text-[#1DB954] font-bold' : ''}>{isPlaying ? 'LIVE OUTPUT' : 'STANDBY'}</span>
                 </div>
 
                 <div className="mb-12 mt-auto">
-                  <h4 className="text-4xl md:text-5xl font-light tracking-tighter uppercase mb-2 truncate" title={currentTrack.title}>
-                    {currentTrack.title}
-                  </h4>
+                  <h4 className="text-4xl md:text-5xl font-light uppercase mb-2 truncate">{currentTrack.title}</h4>
                   <p className="font-sans text-sm tracking-widest text-[#1DB954] uppercase truncate">{currentTrack.artist}</p>
                 </div>
 
                 <div className="flex flex-col gap-6 w-full">
-                  {/* Brutalist Progress Bar */}
                   <div className="flex flex-col gap-3">
                     <div className="h-[2px] w-full bg-white/10 relative overflow-hidden group-hover:h-[4px] transition-all cursor-pointer">
-                      <motion.div 
-                        className="absolute top-0 left-0 h-full bg-white"
-                        style={{ width: `${progress}%` }}
-                      />
+                      <motion.div className="absolute top-0 left-0 h-full bg-white" style={{ width: `${progress}%` }} />
                     </div>
-                    <div className="flex justify-between items-center text-[10px] font-sans tracking-widest text-white/40">
-                      <span>{isPlaying ? `00:${Math.floor(progress * 0.6).toString().padStart(2, '0')}` : "00:00"}</span>
+                    <div className="flex justify-between items-center text-[10px] opacity-40">
+                      <span>{isPlaying ? `00:${Math.floor((progress/100) * 30).toString().padStart(2, '0')}` : "00:00"}</span>
                       <span>{currentTrack.duration}</span>
                     </div>
                   </div>
                   
-                  {/* Controls */}
                   <div className="flex justify-between items-center pt-2">
-                    <button className="text-white/30 hover:text-white transition-colors"><Volume2 size={18} strokeWidth={1.5} /></button>
-                    
+                    <Volume2 size={18} className="text-white/30" />
                     <div className="flex justify-center items-center gap-6 md:gap-8">
-                      <button 
-                        onClick={() => handleTrackSelect((currentTrackIndex - 1 + SPOTIFY_API_MOCK_DATA.length) % SPOTIFY_API_MOCK_DATA.length)}
-                        className="text-white/40 hover:text-white transition-colors"
-                      >
-                        <Rewind size={22} strokeWidth={1.5} />
+                      <button onClick={() => handleTrackSelect((currentTrackIndex - 1 + tracks.length) % tracks.length)}><Rewind size={22} className="text-white/40 hover:text-white" /></button>
+                      <button onClick={() => setIsPlaying(!isPlaying)} className="w-14 h-14 bg-white text-black flex items-center justify-center hover:bg-[#1DB954] transition-all">
+                        {isPlaying ? <Pause size={20} fill="currentColor" /> : <PlayCircle size={24} />}
                       </button>
-                      <button 
-                        onClick={() => setIsPlaying(!isPlaying)}
-                        className="w-14 h-14 bg-white text-black flex items-center justify-center hover:bg-[#1DB954] hover:text-white transition-all hover:scale-105"
-                      >
-                        {isPlaying ? <Pause size={20} strokeWidth={1.5} fill="currentColor" /> : <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-current border-b-[8px] border-b-transparent ml-1"></div>}
-                      </button>
-                      <button 
-                        onClick={() => handleTrackSelect((currentTrackIndex + 1) % SPOTIFY_API_MOCK_DATA.length)}
-                        className="text-white/40 hover:text-white transition-colors"
-                      >
-                        <FastForward size={22} strokeWidth={1.5} />
-                      </button>
+                      <button onClick={() => handleTrackSelect((currentTrackIndex + 1) % tracks.length)}><FastForward size={22} className="text-white/40 hover:text-white" /></button>
                     </div>
-                    
-                    <a href="#" className="text-white/30 hover:text-[#1DB954] transition-colors"><ExternalLink size={18} strokeWidth={1.5} /></a>
+                    <ExternalLink size={18} className="text-white/30" />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* EQ / Visualizer Stats Module */}
-            <div className="lg:col-span-4 bg-[#1DB954] text-black p-8 flex flex-col border border-white/20 shadow-[12px_12px_0px_rgba(0,0,0,1)] relative overflow-hidden group">
-              <div className="flex justify-between items-start mb-auto relative z-10">
-                <span className="text-[10px] tracking-[0.3em] uppercase font-bold bg-black text-white px-2 py-1">SYS.EQ</span>
-                <span className="text-[10px] tracking-[0.3em] uppercase font-bold opacity-50">{isPlaying ? 'ACTIVE' : 'IDLE'}</span>
+            <div className="lg:col-span-4 bg-[#1DB954] text-black p-8 flex flex-col border border-white/20 shadow-[12px_12px_0px_rgba(0,0,0,1)]">
+              <span className="text-[10px] font-bold bg-black text-white px-2 py-1 w-max">SYS.EQ</span>
+              <div className="mt-12 mb-8">
+                <div className="text-[10px] uppercase font-bold opacity-70">Frequency Output</div>
+                <div className="text-5xl lg:text-6xl font-light">{isPlaying ? '14.2kHz' : '0.0kHz'}</div>
               </div>
-              
-              <div className="flex flex-col gap-1 relative z-10 mt-12 mb-8">
-                <div className="text-[10px] tracking-widest uppercase opacity-70 font-bold">Frequency Output</div>
-                <div className="text-5xl lg:text-6xl font-light tracking-tighter uppercase">{isPlaying ? '14.2kHz' : '0.0kHz'}</div>
-              </div>
-
-              {/* Dynamic Waveform Bars */}
-              <div className="flex items-end gap-1 h-32 w-full mt-auto relative z-10">
+              <div className="flex items-end gap-1 h-32 w-full mt-auto">
                 {[...Array(16)].map((_, i) => (
-                  <motion.div 
-                    key={i} 
-                    animate={{ 
-                      height: isPlaying 
-                        ? [`${Math.random() * 30 + 10}%`, `${Math.random() * 80 + 20}%`, `${Math.random() * 50 + 10}%`] 
-                        : "5%" 
-                    }} 
-                    transition={{ 
-                      repeat: Infinity, 
-                      duration: 0.5 + Math.random() * 0.5,
-                      ease: "easeInOut"
-                    }} 
-                    className="flex-1 bg-black" 
-                  />
+                  <motion.div key={i} animate={{ height: isPlaying ? [`${Math.random() * 80 + 20}%`, `${Math.random() * 50 + 10}%`] : "5%" }} transition={{ repeat: Infinity, duration: 0.5 }} className="flex-1 bg-black" />
                 ))}
               </div>
-              
-              {/* Background texture pattern */}
-              <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_center,_black_1px,_transparent_1px)] bg-[size:4px_4px] pointer-events-none"></div>
             </div>
 
-            {/* Playlist Grid */}
             <div className="lg:col-span-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 mt-2">
-              {SPOTIFY_API_MOCK_DATA.map((track, i) => {
-                const isActive = currentTrackIndex === i;
-                return (
-                  <button
-                    key={track.id}
-                    onClick={() => handleTrackSelect(i)}
-                    className={`relative aspect-[4/5] sm:aspect-square border ${isActive ? 'border-[#1DB954]' : 'border-white/20'} overflow-hidden group flex flex-col justify-end p-5 text-left transition-all hover:border-white shadow-[8px_8px_0px_rgba(0,0,0,1)] bg-[#050505]`}
-                  >
-                    {/* Background image */}
-                    <div className="absolute inset-0 z-0">
-                       <img src={track.cover} className={`w-full h-full object-cover transition-all duration-700 ${isActive ? 'grayscale-0 scale-105 opacity-40' : 'grayscale contrast-125 opacity-20 group-hover:scale-110 group-hover:opacity-60'}`} alt={track.title} />
-                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="relative z-10 flex flex-col">
-                       <div className="flex justify-between items-center mb-3">
-                         <span className="text-[10px] tracking-widest font-sans opacity-70">0{i+1}</span>
-                         <span className="text-[10px] tracking-widest font-sans opacity-70">{track.duration}</span>
-                       </div>
-                       <span className={`text-lg lg:text-xl font-light uppercase tracking-tighter truncate leading-tight ${isActive ? 'text-[#1DB954]' : 'text-white'}`}>{track.title}</span>
-                       <span className="text-[10px] tracking-[0.2em] font-sans uppercase opacity-50 truncate mt-1">{track.artist}</span>
-                    </div>
-                    
-                    {/* Playing indicator */}
-                    {isActive && isPlaying && (
-                       <div className="absolute top-5 right-5 flex items-end gap-[2px] h-3">
-                         <motion.div animate={{ height: ["3px", "10px", "3px"] }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-[2px] bg-[#1DB954]" />
-                         <motion.div animate={{ height: ["10px", "4px", "10px"] }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-[2px] bg-[#1DB954]" />
-                         <motion.div animate={{ height: ["5px", "12px", "5px"] }} transition={{ repeat: Infinity, duration: 0.8 }} className="w-[2px] bg-[#1DB954]" />
-                       </div>
-                    )}
-                  </button>
-                )
-              })}
+              {tracks.map((track, i) => (
+                <button key={track.id} onClick={() => handleTrackSelect(i)} className={`relative aspect-square border ${currentTrackIndex === i ? 'border-[#1DB954]' : 'border-white/20'} overflow-hidden group flex flex-col justify-end p-5 text-left bg-[#050505]`}>
+                  <div className="absolute inset-0 z-0">
+                    <img src={track.cover} className={`w-full h-full object-cover transition-all duration-700 ${currentTrackIndex === i ? 'grayscale-0 opacity-40' : 'grayscale opacity-20 group-hover:opacity-60'}`} alt={track.title} />
+                  </div>
+                  <div className="relative z-10 flex flex-col">
+                    <span className={`text-lg font-light uppercase truncate ${currentTrackIndex === i ? 'text-[#1DB954]' : 'text-white'}`}>{track.title}</span>
+                    <span className="text-[10px] opacity-50 truncate">{track.artist}</span>
+                  </div>
+                </button>
+              ))}
             </div>
-            
           </div>
         </div>
       </section>

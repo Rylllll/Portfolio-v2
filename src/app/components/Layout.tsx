@@ -9,7 +9,7 @@ const menuLinks = [
   { name: "Home", path: "/", image: "https://images.unsplash.com/photo-1769283991436-9ce2354aaaf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBicnV0YWxpc3QlMjBhcmNoaXRlY3R1cmUlMjBjb25jcmV0ZXxlbnwxfHx8fDE3NzM0MTc4ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080" },
   { name: "Projects", path: "/projects", image: "https://images.unsplash.com/photo-1743778812446-89def1e784cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGdlbmVyYXRpdmUlMjBjb2RlJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzM0NjMxMjR8MA&ixlib=rb-4.1.0&q=80&w=1080" },
   { name: "Experiments", path: "/experiments", image: "https://images.unsplash.com/photo-1668010988953-1598ecafe716?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjB0ZXJtaW5hbCUyMGNvZGUlMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDF8fHx8MTc3MzQ2MzEyNHww&ixlib=rb-4.1.0&q=80&w=1080" },
-  { name: "Tech Stack", path: "/stack", image: "https://images.unsplash.com/photo-1510513867415-5133def69b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHdpcmVmcmFtZSUyMGFyY2hpdGVjdHVyZSUyMG1vbm9jaHJvbWV8ZW58MXx8fHwxNzczNDYzMTI0fDA&ixlib=rb-4.1.0&q=80&w=1080" },
+
   { name: "About Me", path: "/about", image: "https://images.unsplash.com/photo-1767714874597-171a438ad0ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwcG9ydHJhaXQlMjBtb2Rlcm4lMjBtYW4lMjBtaW5pbWFsfGVufDF8fHx8MTc3MzQ3MjU4M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
   { name: "Contact", path: "/contact", image: "https://images.unsplash.com/photo-1693903395525-dcdf17566d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250YWN0JTIwbWluaW1hbCUyMGRhcmslMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzczNDgwMTYyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
 ];
@@ -383,7 +383,6 @@ export function Layout() {
                 { name: 'Home', path: '/' },
                 { name: 'Projects', path: '/projects' },
                 { name: 'Experiments', path: '/experiments' },
-                { name: 'Tech Stack', path: '/stack' },
                 { name: 'About Me', path: '/about' },
                 { name: 'Contact', path: '/contact' }
               ].map((link, i) => (
