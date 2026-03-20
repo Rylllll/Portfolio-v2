@@ -9,7 +9,11 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    
   ],
+  build: {
+    outDir: 'build' // This tells Vite to use 'build' instead of 'dist'
+  },
   resolve: {
     alias: {
       // Alias @ to the src directory
