@@ -233,10 +233,10 @@ export function AboutMe() {
           >
             <div className="text-[10px] tracking-[0.3em] uppercase font-sans flex flex-col gap-1">
               <span>System // Online</span>
-              <span className="opacity-50">v2.0.4 - Architecture</span>
+              <span className="opacity-50">v2.0.4 - Programmer</span>
             </div>
             <div className="text-[10px] tracking-[0.3em] uppercase font-sans text-right flex flex-col gap-1">
-              <span>Location // Unknown</span>
+              <span>Location // Manila, Philippines</span>
               <span className="opacity-50">Coordinates Masked</span>
             </div>
           </motion.div>
@@ -356,6 +356,15 @@ export function AboutMe() {
               transition={{ delay: 0.2 }}
             >
               Today, I build premium web experiences that treat the browser not merely as a document viewer, but as an expansive canvas for high-performance art. I believe in brutalism—not in the sense of being unrefined, but in being absolutely honest about the materials we use. Raw HTML, naked logic, and unapologetic performance.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.3 }}
+            >
+             For three years, I served as the Lead Front-End Developer at Yamaha Philippines, where I spearheaded the development of the company’s main website. Beyond maintaining a flagship digital platform, I led the creation of multiple high-impact web projects—each engineered with precision, scalability, and a deep respect for both brand identity and user experience.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

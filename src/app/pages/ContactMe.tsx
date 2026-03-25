@@ -74,18 +74,18 @@ export function ContactMe() {
           >
             <div>
               <span className="block text-white/40 mb-2">Location</span>
-              <span className="block font-medium">New York, NY</span>
-              <span className="block opacity-70">Grid Sector 4</span>
+              <span className="block font-medium">Manila, Philippines, NY</span>
+              <span className="block opacity-70">Rizal Antipolo City</span>
             </div>
             <div>
               <span className="block text-white/40 mb-2">Direct Line</span>
-              <a href="mailto:hello@fed.studio" className="block font-medium hover:italic transition-all">hello@fed.studio</a>
+              <a href="mailto:reymark.designs@gmail.com" className="block font-medium hover:italic transition-all">reymark.designs@gmail.com</a>
               <span className="block opacity-70">Encrypted</span>
             </div>
             <div className="col-span-2">
               <span className="block text-white/40 mb-2">Social Parameters</span>
               <div className="flex gap-6">
-                <a href="#" className="hover:text-[#1DB954] transition-colors border-b border-transparent hover:border-[#1DB954]">Twitter</a>
+                <a href="#" className="hover:text-[#1DB954] transition-colors border-b border-transparent hover:border-[#1DB954]">Facebook</a>
                 <a href="#" className="hover:text-[#1DB954] transition-colors border-b border-transparent hover:border-[#1DB954]">GitHub</a>
                 <a href="#" className="hover:text-[#1DB954] transition-colors border-b border-transparent hover:border-[#1DB954]">LinkedIn</a>
               </div>

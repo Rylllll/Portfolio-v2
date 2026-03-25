@@ -10,7 +10,7 @@ const menuLinks = [
   { name: "Projects", path: "/projects", image: "https://images.unsplash.com/photo-1743778812446-89def1e784cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGdlbmVyYXRpdmUlMjBjb2RlJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzM0NjMxMjR8MA&ixlib=rb-4.1.0&q=80&w=1080" },
   { name: "Experiments", path: "/experiments", image: "https://images.unsplash.com/photo-1668010988953-1598ecafe716?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjB0ZXJtaW5hbCUyMGNvZGUlMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDF8fHx8MTc3MzQ2MzEyNHww&ixlib=rb-4.1.0&q=80&w=1080" },
 
-  { name: "About Me", path: "/about", image: "https://images.unsplash.com/photo-1767714874597-171a438ad0ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwcG9ydHJhaXQlMjBtb2Rlcm4lMjBtYW4lMjBtaW5pbWFsfGVufDF8fHx8MTc3MzQ3MjU4M3ww&ixlib=rb-4.1.0&q=80&w=1080" },
+  { name: "About Me", path: "/about", image: "/images/profile.png" },
   { name: "Contact", path: "/contact", image: "https://images.unsplash.com/photo-1693903395525-dcdf17566d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250YWN0JTIwbWluaW1hbCUyMGRhcmslMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzczNDgwMTYyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
 ];
 
@@ -78,8 +78,8 @@ export function Layout() {
       >
         <div className="pointer-events-auto text-xs uppercase tracking-[0.3em] font-medium group">
           <Link to="/" className="flex flex-col overflow-hidden h-4">
-            <motion.span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">F.E.D.</motion.span>
-            <motion.span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">F.E.D.</motion.span>
+            <motion.span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">R.D.E.V.</motion.span>
+            <motion.span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">R.D.E.V.</motion.span>
           </Link>
         </div>
         
@@ -229,13 +229,13 @@ export function Layout() {
               className="absolute bottom-12 w-full px-6 md:px-24 flex flex-col md:flex-row justify-between items-center md:items-end text-[10px] tracking-[0.3em] text-white/50 uppercase gap-6 md:gap-0 z-20"
             >
               <div className="flex gap-8">
-                <a href="#" className="hover:text-white transition-colors">Twitter</a>
+                <a href="#" className="hover:text-white transition-colors">Facebook</a>
                 <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
                 <a href="#" className="hover:text-white transition-colors">GitHub</a>
               </div>
               <div className="text-center md:text-right">
                 <p>Status: Available for Work</p>
-                <p className="mt-2">Location: New York ™</p>
+                <p className="mt-2">Location: Manila, Philippines ™</p>
               </div>
             </motion.div>
           </motion.div>
@@ -459,7 +459,7 @@ export function Layout() {
               transition={{ duration: 1, delay: 0.4 }}
               className="flex flex-wrap md:flex-nowrap gap-8 md:gap-12 md:pr-[10%]"
             >
-              {['Twitter (X)', 'GitHub', 'CodePen', 'LinkedIn'].map((social) => (
+              {['Facebook', 'GitHub', 'CodePen', 'LinkedIn'].map((social) => (
                 <a key={social} href="#" className="relative group overflow-hidden">
                   <span className="block group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{social}</span>
                   <span className="block absolute top-full left-0 group-hover:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">{social}</span>
@@ -474,13 +474,13 @@ export function Layout() {
               transition={{ duration: 1, delay: 0.6 }}
               className="text-black/50"
             >
-              ©2026 F.E.D. STUDIO
+              ©2026 R.D.E.V STUDIO
             </motion.span>
           </div>
 
           {/* Huge Letters */}
           <div className="container mx-auto px-6 md:px-12 w-full flex justify-between items-end leading-[0.75] tracking-tighter text-black pb-8 md:pb-12 mt-12 md:mt-auto overflow-hidden">
-            {['F', 'E', 'D'].map((letter, i) => (
+            {['R', 'D', 'E', 'V'].map((letter, i) => (
               <motion.span 
                 key={letter}
                 initial={{ y: "100%" }}
