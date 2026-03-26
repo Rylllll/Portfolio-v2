@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import { PlayCircle, FastForward, Rewind, Pause, Volume2, ExternalLink, Download, Maximize, X, FileText } from "lucide-react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import myPhoto from "/images/profile.png";
+import { galleryData } from "../../../data/gallery";
 
 
 const SPOTIFY_API_MOCK_DATA = [
@@ -364,7 +365,7 @@ export function AboutMe() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: 0.3 }}
             >
-             For three years, I served as the Lead Front-End Developer at Yamaha Philippines, where I spearheaded the development of the company’s main website. Beyond maintaining a flagship digital platform, I led the creation of multiple high-impact web projects—each engineered with precision, scalability, and a deep respect for both brand identity and user experience.
+              For three years, I served as the Lead Front-End Developer at Yamaha Philippines, where I spearheaded the development of the company’s main website. Beyond maintaining a flagship digital platform, I led the creation of multiple high-impact web projects—each engineered with precision, scalability, and a deep respect for both brand identity and user experience.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -688,50 +689,43 @@ export function AboutMe() {
           <div className="mt-12 w-full">
             <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
               <Masonry gutter="16px">
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative group overflow-hidden bg-black cursor-pointer" onClick={() => setFullscreenImage("https://images.unsplash.com/photo-1622149828641-bf3cd5aa6c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHdoaXRlJTIwc3RyZWV0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzczNDY3NTY3fDA&ixlib=rb-4.1.0&q=80&w=1080")}>
-                  <img src="https://images.unsplash.com/photo-1622149828641-bf3cd5aa6c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHdoaXRlJTIwc3RyZWV0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzczNDY3NTY3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Street Photography" className="w-full h-auto block grayscale contrast-125 hover:scale-105 transition-transform duration-700 hover:grayscale-0 opacity-90 hover:opacity-100" />
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button onClick={(e) => handleImageDownload(e, "https://images.unsplash.com/photo-1622149828641-bf3cd5aa6c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHdoaXRlJTIwc3RyZWV0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzczNDY3NTY3fDA&ixlib=rb-4.1.0&q=80&w=1080")} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Download size={16} /></button>
-                    <button onClick={(e) => { e.stopPropagation(); setFullscreenImage("https://images.unsplash.com/photo-1622149828641-bf3cd5aa6c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHdoaXRlJTIwc3RyZWV0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzczNDY3NTY3fDA&ixlib=rb-4.1.0&q=80&w=1080"); }} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Maximize size={16} /></button>
-                  </div>
-                  <div className="absolute bottom-4 left-4 text-white text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1">STREET</div>
-                </motion.div>
-
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="relative group overflow-hidden bg-black cursor-pointer" onClick={() => setFullscreenImage("https://images.unsplash.com/photo-1615112638325-8f32071a480e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2ZmZWUlMjBlc3ByZXNzbyUyMGRhcmslMjBtaW5pbWFsfGVufDF8fHx8MTc3MzQ3NTA4OXww&ixlib=rb-4.1.0&q=80&w=1080")}>
-                  <img src="https://images.unsplash.com/photo-1615112638325-8f32071a480e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2ZmZWUlMjBlc3ByZXNzbyUyMGRhcmslMjBtaW5pbWFsfGVufDF8fHx8MTc3MzQ3NTA4OXww&ixlib=rb-4.1.0&q=80&w=1080" alt="Espresso" className="w-full h-auto block grayscale contrast-125 hover:scale-105 transition-transform duration-700 hover:grayscale-0 opacity-90 hover:opacity-100" />
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button onClick={(e) => handleImageDownload(e, "https://images.unsplash.com/photo-1615112638325-8f32071a480e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2ZmZWUlMjBlc3ByZXNzbyUyMGRhcmslMjBtaW5pbWFsfGVufDF8fHx8MTc3MzQ3NTA4OXww&ixlib=rb-4.1.0&q=80&w=1080")} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Download size={16} /></button>
-                    <button onClick={(e) => { e.stopPropagation(); setFullscreenImage("https://images.unsplash.com/photo-1615112638325-8f32071a480e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2ZmZWUlMjBlc3ByZXNzbyUyMGRhcmslMjBtaW5pbWFsfGVufDF8fHx8MTc3MzQ3NTA4OXww&ixlib=rb-4.1.0&q=80&w=1080"); }} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Maximize size={16} /></button>
-                  </div>
-                  <div className="absolute bottom-4 left-4 text-white text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1">EXTRACTION</div>
-                </motion.div>
-
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="relative group overflow-hidden bg-black cursor-pointer" onClick={() => setFullscreenImage("https://images.unsplash.com/photo-1761834520785-ca17a0275f6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwYm9va3MlMjBsaWJyYXJ5JTIwZGFya3xlbnwxfHx8fDE3NzM0NzUxMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080")}>
-                  <img src="https://images.unsplash.com/photo-1761834520785-ca17a0275f6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwYm9va3MlMjBsaWJyYXJ5JTIwZGFya3xlbnwxfHx8fDE3NzM0NzUxMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Literature" className="w-full h-auto block grayscale contrast-125 hover:scale-105 transition-transform duration-700 hover:grayscale-0 opacity-90 hover:opacity-100" />
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button onClick={(e) => handleImageDownload(e, "https://images.unsplash.com/photo-1761834520785-ca17a0275f6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwYm9va3MlMjBsaWJyYXJ5JTIwZGFya3xlbnwxfHx8fDE3NzM0NzUxMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080")} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Download size={16} /></button>
-                    <button onClick={(e) => { e.stopPropagation(); setFullscreenImage("https://images.unsplash.com/photo-1761834520785-ca17a0275f6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwYm9va3MlMjBsaWJyYXJ5JTIwZGFya3xlbnwxfHx8fDE3NzM0NzUxMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080"); }} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Maximize size={16} /></button>
-                  </div>
-                  <div className="absolute bottom-4 left-4 text-white text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1">THEORY</div>
-                </motion.div>
-
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="relative group overflow-hidden bg-black cursor-pointer" onClick={() => setFullscreenImage("https://images.unsplash.com/photo-1715939477771-74ffedd6a072?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb25vY2hyb21lJTIwYXJjaGl0ZWN0dXJlJTIwZGFya3xlbnwxfHx8fDE3NzM0NzUwODB8MA&ixlib=rb-4.1.0&q=80&w=1080")}>
-                  <img src="https://images.unsplash.com/photo-1715939477771-74ffedd6a072?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb25vY2hyb21lJTIwYXJjaGl0ZWN0dXJlJTIwZGFya3xlbnwxfHx8fDE3NzM0NzUwODB8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Architecture" className="w-full h-auto block grayscale contrast-125 hover:scale-105 transition-transform duration-700 hover:grayscale-0 opacity-90 hover:opacity-100" />
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button onClick={(e) => handleImageDownload(e, "https://images.unsplash.com/photo-1715939477771-74ffedd6a072?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb25vY2hyb21lJTIwYXJjaGl0ZWN0dXJlJTIwZGFya3xlbnwxfHx8fDE3NzM0NzUwODB8MA&ixlib=rb-4.1.0&q=80&w=1080")} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Download size={16} /></button>
-                    <button onClick={(e) => { e.stopPropagation(); setFullscreenImage("https://images.unsplash.com/photo-1715939477771-74ffedd6a072?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb25vY2hyb21lJTIwYXJjaGl0ZWN0dXJlJTIwZGFya3xlbnwxfHx8fDE3NzM0NzUwODB8MA&ixlib=rb-4.1.0&q=80&w=1080"); }} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Maximize size={16} /></button>
-                  </div>
-                  <div className="absolute bottom-4 left-4 text-white text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1">STRUCTURE</div>
-                </motion.div>
-
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="relative group overflow-hidden bg-black hidden md:block cursor-pointer" onClick={() => setFullscreenImage("https://images.unsplash.com/photo-1769287429003-2a7e8ebee0d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYW1lcmElMjBsZW5zJTIwbW9ub2Nocm9tZSUyMGRhcmt8ZW58MXx8fHwxNzczNDcyNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080")}>
-                  <img src="https://images.unsplash.com/photo-1769287429003-2a7e8ebee0d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYW1lcmElMjBsZW5zJTIwbW9ub2Nocm9tZSUyMGRhcmt8ZW58MXx8fHwxNzczNDcyNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Camera Lens" className="w-full h-auto block grayscale contrast-125 hover:scale-105 transition-transform duration-700 hover:grayscale-0 opacity-90 hover:opacity-100" />
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button onClick={(e) => handleImageDownload(e, "https://images.unsplash.com/photo-1769287429003-2a7e8ebee0d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYW1lcmElMjBsZW5zJTIwbW9ub2Nocm9tZSUyMGRhcmt8ZW58MXx8fHwxNzczNDcyNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080")} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Download size={16} /></button>
-                    <button onClick={(e) => { e.stopPropagation(); setFullscreenImage("https://images.unsplash.com/photo-1769287429003-2a7e8ebee0d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYW1lcmElMjBsZW5zJTIwbW9ub2Nocm9tZSUyMGRhcmt8ZW58MXx8fHwxNzczNDcyNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080"); }} className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"><Maximize size={16} /></button>
-                  </div>
-                  <div className="absolute bottom-4 left-4 text-white text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1">LENS</div>
-                </motion.div>
+                {galleryData.map((item) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: item.delay }}
+                    className={`relative group overflow-hidden bg-black cursor-pointer ${item.customClass}`}
+                    onClick={() => setFullscreenImage(item.src)}
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full h-auto block grayscale contrast-125 hover:scale-105 transition-transform duration-700 hover:grayscale-0 opacity-90 hover:opacity-100"
+                    />
+                    <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <button
+                        onClick={(e) => handleImageDownload(e, item.src)}
+                        className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"
+                      >
+                        <Download size={16} />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setFullscreenImage(item.src);
+                        }}
+                        className="bg-black/80 text-white p-2 hover:text-[#1DB954] hover:bg-black transition-all border border-white/20"
+                      >
+                        <Maximize size={16} />
+                      </button>
+                    </div>
+                    <div className="absolute bottom-4 left-4 text-white text-[10px] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 px-2 py-1">
+                      {item.label}
+                    </div>
+                  </motion.div>
+                ))}
               </Masonry>
             </ResponsiveMasonry>
           </div>

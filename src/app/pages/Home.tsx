@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { GeometricOverlay } from "../components/GeometricOverlay";
 import { Model3D } from "../components/Model3D";
 import { AnimatedText } from "../components/AnimatedText";
+import { Computer, Mail, Linkedin, Instagram } from "lucide-react";
 
 export function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -104,55 +105,74 @@ export function Home() {
   return (
     <div className="w-full bg-white relative">
       {/* Hero Section */}
-      <section ref={heroRef} style={{ position: 'relative' }} className="relative h-[100svh] w-full overflow-hidden bg-black flex items-end p-6 md:p-12 pb-24 md:pb-32">
-        <GeometricOverlay light />
+      <section ref={heroRef} className="relative h-[100svh] w-full overflow-hidden bg-[#0a0a0a] flex items-center justify-center p-6 md:p-12">
 
-        <motion.div className="absolute inset-0 w-full h-full z-0 opacity-40 mix-blend-screen" style={{ y: heroBgY }}>
+        <div className="absolute inset-0 xl:z-30 lg:z-30 md:z-30 -z-0 flex items-center justify-center pointer-events-none">
+          <img
+            src="/images/others/bg_profile.png"
+            alt="Developer"
+            className="object-cover w-full h-full max-w-[800px] h-full grayscale object-center xl:opacity-100 lg:opacity-90 md:opacity-90"
+          />
+        </div>
+        {/* Background Elements */}
+        <GeometricOverlay light={false} />
+        <motion.div className="absolute inset-0 w-full h-full z-0 opacity-60 mix-blend-screen" style={{ y: heroBgY }}>
           <Model3D interactive />
         </motion.div>
 
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto flex justify-between items-end pointer-events-none">
+        {/* Massive Typography with Blend Mode */}
+        <div className="relative z-10 w-full max-w-[1600px] mx-auto flex flex-col justify-center pointer-events-none mix-blend-difference">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="show"
-            className="flex flex-col mix-blend-difference"
+            className="flex flex-col text-white"
           >
             <div className="overflow-hidden">
-              <motion.h1 variants={fadeInUp} className="text-6xl md:text-[8rem] lg:text-[10rem] font-light tracking-tighter text-white leading-[0.85] uppercase">
-               Reymark 
+              <motion.h1 variants={fadeInUp} className="text-[18vw] md:text-[13vw] font-normal tracking-tighter leading-[0.8] uppercase text-center md:text-left">
+                Reymark
               </motion.h1>
             </div>
-            <div className="overflow-hidden ml-0 md:ml-32">
-              <motion.h1 variants={fadeInUp} className="text-6xl md:text-[8rem] lg:text-[10rem] font-light tracking-tighter text-white leading-[0.85] uppercase">
-                Personal's
-              </motion.h1>
-            </div>
-            <div className="overflow-hidden">
-              <motion.h1 variants={fadeInUp} className="text-6xl md:text-[8rem] lg:text-[10rem] font-light tracking-tighter text-white leading-[0.85] uppercase">
-                Portfolio
-              </motion.h1>
-            </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="hidden md:flex flex-col items-center gap-4 mix-blend-difference text-white pb-8"
-          >
-            <span className="text-[10px] tracking-[0.3em] uppercase rotate-90 mb-8">Scroll</span>
-            <motion.div
-              className="w-[1px] h-16 bg-white/50 relative overflow-hidden"
-            >
-              <motion.div
-                className="w-full h-full bg-white origin-top"
-                animate={{ y: ["-100%", "100%"] }}
-                transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-              />
-            </motion.div>
+            <div className="md:pl-[20%]">
+              <motion.h1 variants={fadeInUp} className="text-[18vw] md:text-[13vw] font-normal tracking-tighter leading-[0.8] uppercase text-center md:text-left">
+                Boquiron
+              </motion.h1>
+            </div>
           </motion.div>
         </div>
+
+
+        {/* Bottom Right: Social Links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.2, duration: 1 }}
+          className="absolute bottom-8 right-6 md:bottom-12 md:right-12 z-20 flex items-center gap-6 text-white/60"
+        >
+          <a href="#" className="hover:text-white transition-colors"><Computer size={20} /></a>
+          <a href="#" className="hover:text-white transition-colors"><Mail size={20} /></a>
+          <a href="#" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
+          <a href="#" className="hover:text-white transition-colors"><Instagram size={20} /></a>
+        </motion.div>
+
+        {/* Right Side: Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.5, duration: 1 }}
+          className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col items-center gap-4 text-white"
+        >
+          <span className="text-[10px] tracking-[0.4em] uppercase rotate-90 mb-12 origin-center">Scroll</span>
+          <div className="w-[2px] h-24 bg-white/20 relative overflow-hidden">
+            <motion.div
+              className="w-full h-full bg-white origin-top"
+              animate={{ y: ["-100%", "100%"] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+            />
+          </div>
+        </motion.div>
+
       </section>
 
       {/* Infinite Marquee Project Intro Strip */}
@@ -253,7 +273,7 @@ export function Home() {
           {/* Foreground Image of man with feathered edges */}
           <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
             <img
-              src="https://images.unsplash.com/photo-1667366106450-63fcac940b26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYWNrZXIlMjBibGFjayUyMGJhY2tncm91bmR8ZW58MXx8fHwxNzczNDc4NTE3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              src="/images/others/pc.png"
               alt="Developer"
               className="object-cover w-full h-full max-w-[800px] max-h-[90vh] grayscale object-center opacity-90"
               style={{
@@ -811,7 +831,7 @@ export function Home() {
       <section className="w-full h-[60vh] md:h-[90vh] bg-neutral-900 relative overflow-hidden group">
         <GeometricOverlay light={true} />
         <motion.img
-          src="https://images.unsplash.com/photo-1615532316696-3116b1df3ee9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG1vZGVybiUyMGFyY2hpdGVjdHVyZXxlbnwxfHx8fDE3NzMzMjM0ODB8MA&ixlib=rb-4.1.0&q=80&w=1920"
+          src="/images/photography/house.jpg"
           className="w-full h-full object-cover object-center grayscale opacity-70 mix-blend-screen group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[2000ms] ease-out"
           alt="Landscape Structure"
           initial={{ scale: 1.1, y: "-10%" }}
