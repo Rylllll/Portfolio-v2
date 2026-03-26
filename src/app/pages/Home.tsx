@@ -111,7 +111,7 @@ export function Home() {
           <img
             src="/images/others/bg_profile.png"
             alt="Developer"
-            className="object-cover w-full h-full max-w-[800px] h-full grayscale object-center xl:opacity-100 lg:opacity-90 md:opacity-90"
+            className="object-cover w-full h-full max-w-[800px] h-full grayscale object-center xl:opacity-90 lg:opacity-90 md:opacity-90 opacity-90"
           />
         </div>
         {/* Background Elements */}
