@@ -150,10 +150,10 @@ export function Home() {
           transition={{ delay: 2.2, duration: 1 }}
           className="absolute bottom-8 right-6 md:bottom-12 md:right-12 z-20 flex items-center gap-6 text-white/60"
         >
-          <a href="#" className="hover:text-white transition-colors"><Computer size={20} /></a>
-          <a href="#" className="hover:text-white transition-colors"><Mail size={20} /></a>
-          <a href="#" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
-          <a href="#" className="hover:text-white transition-colors"><Instagram size={20} /></a>
+          <a href="https://github.com/Rylllll" target="__blank" className="hover:text-white transition-colors"><Computer size={20} /></a>
+          <a href="reymarkdesigns@gmail.com" target="__blank" className="hover:text-white transition-colors"><Mail size={20} /></a>
+          <a href="https://www.linkedin.com/in/reymarkboquiron/" target="__blank" className="hover:text-white transition-colors"><Linkedin size={20} /></a>
+          <a href="https://www.instagram.com/rynathhh/?hl=en" target="__blank" className="hover:text-white transition-colors"><Instagram size={20} /></a>
         </motion.div>
 
         {/* Right Side: Scroll Indicator */}
