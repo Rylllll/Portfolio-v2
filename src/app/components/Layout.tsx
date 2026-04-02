@@ -9,7 +9,6 @@ const menuLinks = [
   { name: "Home", path: "/", image: "https://images.unsplash.com/photo-1769283991436-9ce2354aaaf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBicnV0YWxpc3QlMjBhcmNoaXRlY3R1cmUlMjBjb25jcmV0ZXxlbnwxfHx8fDE3NzM0MTc4ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080" },
   { name: "Projects", path: "/projects", image: "https://images.unsplash.com/photo-1743778812446-89def1e784cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGdlbmVyYXRpdmUlMjBjb2RlJTIwYmxhY2slMjBhbmQlMjB3aGl0ZXxlbnwxfHx8fDE3NzM0NjMxMjR8MA&ixlib=rb-4.1.0&q=80&w=1080" },
   { name: "Experiments", path: "/experiments", image: "https://images.unsplash.com/photo-1668010988953-1598ecafe716?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZXJ2ZXIlMjB0ZXJtaW5hbCUyMGNvZGUlMjBibGFjayUyMGFuZCUyMHdoaXRlfGVufDF8fHx8MTc3MzQ2MzEyNHww&ixlib=rb-4.1.0&q=80&w=1080" },
-
   { name: "About Me", path: "/about", image: "/images/profile.png" },
   { name: "Contact", path: "/contact", image: "https://images.unsplash.com/photo-1693903395525-dcdf17566d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250YWN0JTIwbWluaW1hbCUyMGRhcmslMjBhcmNoaXRlY3R1cmV8ZW58MXx8fHwxNzczNDgwMTYyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" },
 ];
@@ -151,8 +150,9 @@ export function Layout() {
             </div>
 
             <div className="flex flex-col md:flex-row w-full h-full relative z-10 px-6 md:px-24 pt-32 pb-24 items-center justify-between">
+              
               {/* Left: Navigation Links */}
-              <nav className="flex flex-col gap-4 md:gap-8 text-left w-full md:w-1/2 relative z-10">
+              <nav className="flex flex-col gap-4 md:gap-8 text-left w-full md:w-1/2 relative z-20">
                 {menuLinks.map((link, i) => (
                   <div key={link.path} className="overflow-hidden relative group py-1">
                     <motion.div
@@ -170,20 +170,30 @@ export function Layout() {
                           setIsHoveringMenu(true);
                         }}
                         onMouseLeave={() => setIsHoveringMenu(false)}
-                        className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light uppercase tracking-tighter flex items-center justify-start gap-4 md:gap-6 relative hover:italic transition-all duration-500 origin-left"
+                        className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light uppercase tracking-tighter flex items-center justify-start gap-4 md:gap-6 relative transition-all duration-500 origin-left group/nav"
                       >
-                        <span className="text-xs md:text-sm tracking-[0.2em] font-medium opacity-50 group-hover:opacity-100 group-hover:translate-x-4 transition-all duration-500 font-sans not-italic w-12 hidden md:block">
+                        {/* Number Indicator */}
+                        <span className="text-xs md:text-sm tracking-[0.2em] font-medium opacity-50 group-hover/nav:opacity-100 transition-all duration-500 font-sans not-italic w-8 md:w-12 hidden md:block">
                           0{i + 1}
                         </span>
-                        {link.name}
+
+                        {/* Animated Slide-Up Text */}
+                        <div className="relative overflow-hidden h-[1.1em] flex items-center">
+                          <span className="bloc font-semibold group-hover/nav:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1]">
+                            {link.name}
+                          </span>
+                          <span className="absolute font-semibold left-0 top-full block group-hover/nav:-translate-y-full transition-transform duration-500 ease-[0.76,0,0.24,1] ">
+                            {link.name}
+                          </span>
+                        </div>
                       </Link>
                     </motion.div>
                   </div>
                 ))}
               </nav>
 
-              {/* Right: Dynamic Image Gallery */}
-              <div className="hidden md:grid absolute right-[-10vw] top-[5vh] w-[65vw] h-[90vh] grid-cols-6 grid-rows-6 gap-2 lg:gap-4 z-0 pointer-events-none transform rotate-[2deg] scale-105 opacity-90">
+              {/* Right: Dynamic Image Gallery (Now Responsive) */}
+              <div className="grid absolute inset-0 md:inset-auto md:right-[-10vw] top-0 md:top-[5vh] w-full md:w-[65vw] h-full md:h-[90vh] grid-cols-6 grid-rows-6 gap-1 md:gap-2 lg:gap-4 z-0 pointer-events-none md:transform md:rotate-[2deg] md:scale-105 opacity-20 md:opacity-90">
                 {menuLinks.map((link, i) => {
                   const gridClasses = [
                     "col-start-1 col-end-5 row-start-1 row-end-5",

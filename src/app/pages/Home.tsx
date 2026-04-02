@@ -314,15 +314,15 @@ export function Home() {
         </div>
       </section>
 
-      {/* Horizontal Scroll Section 1 (Leftwards) */}
+     {/* Horizontal Scroll Section 1 (Leftwards) - THE TECH STACK */}
       <section ref={horizontalScrollRef} className="relative h-[500vh] bg-[#050505] text-white border-t border-white/10">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
           <motion.div style={{ x: horizontalX }} className="flex h-full w-[500vw] will-change-transform">
 
-            {/* Panel 1 */}
+            {/* Panel 1: Next.js */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden border-r border-white/10">
               <GeometricOverlay light />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-light text-white/[0.03] z-0 pointer-events-none uppercase tracking-tighter">STATE</div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-light text-white/[0.03] z-0 pointer-events-none uppercase tracking-tighter">NEXT.JS</div>
               <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center justify-center w-full max-w-[1400px] mx-auto z-10 relative">
                 <motion.div style={{ x: p1TextX }} className="w-full md:w-5/12 relative z-20">
                   <div className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-6 flex items-center gap-4">
@@ -332,12 +332,12 @@ export function Home() {
                   <motion.h3
                     className="text-5xl md:text-7xl lg:text-8xl font-light uppercase tracking-tighter mb-8 leading-[0.9]"
                   >
-                    State<br /><span className="italic opacity-80">Machine.</span>
+                    Core /<br /><span className="italic opacity-80">Next.js.</span>
                   </motion.h3>
                   <motion.p
                     className="text-xs md:text-sm tracking-[0.2em] uppercase leading-loose text-white/60 max-w-md border-l border-white/20 pl-6"
                   >
-                    Architecting scalable data flows. Turning complex asynchronous logic into deterministic UI updates that never compromise on performance.
+                    Building the foundation. I utilize Next.js for robust server-side rendering and seamless static site generation, guaranteeing high performance and optimal SEO for my web applications.
                   </motion.p>
                 </motion.div>
                 <motion.div style={{ x: p1ImageX }} className="w-full md:w-7/12 aspect-[4/3] md:h-[60vh] overflow-hidden group bg-[#111] relative p-4">
@@ -345,8 +345,8 @@ export function Home() {
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
-                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlJTIwbWF0cml4fGVufDF8fHx8MTc3MzQ2MTM3NHww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Code Matrix"
+                    src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlfGVufDF8fHx8MTczNDUxOTg3MHww&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="Next.js Code Architecture"
                     className="w-full h-full object-cover grayscale contrast-125 opacity-70 group-hover:opacity-100 transition-opacity duration-700"
                   />
                   <div className="absolute top-8 right-8 text-[10px] tracking-widest uppercase bg-black text-white px-3 py-1 border border-white/20 z-20">Fig. 1</div>
@@ -354,16 +354,16 @@ export function Home() {
               </div>
             </div>
 
-            {/* Panel 2 */}
+            {/* Panel 2: Tailwind CSS */}
             <div className="w-screen h-full flex items-center justify-center relative overflow-hidden bg-white text-black border-r border-black/10">
               <GeometricOverlay />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-light text-black/[0.03] z-0 pointer-events-none uppercase tracking-tighter">DOM</div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-light text-black/[0.03] z-0 pointer-events-none uppercase tracking-tighter">TAILWIND</div>
 
               <div className="w-full h-full max-w-[1400px] mx-auto flex items-center justify-start p-6 md:p-12 lg:p-24 relative z-10">
                 <motion.div style={{ scale: p2Scale }} className="absolute right-0 top-1/2 -translate-y-1/2 w-3/4 md:w-2/3 h-[80vh] z-0 opacity-20 group pointer-events-none">
                   <img
-                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXJkd2FyZSUyMGNvbXB1dGVyfGVufDF8fHx8MTc3MzQ2MTM3NHww&ixlib=rb-4.1.0&q=80&w=1920"
-                    alt="Hardware"
+                    src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjc3N8ZW58MHx8fHwxNzM0NTE5ODcwfDA&ixlib=rb-4.1.0&q=80&w=1920"
+                    alt="Tailwind CSS Styling"
                     className="w-full h-full object-cover grayscale object-right"
                   />
                 </motion.div>
@@ -374,19 +374,19 @@ export function Home() {
                 >
                   <div className="absolute -top-3 -left-3 w-6 h-6 bg-white border border-black z-30"></div>
                   <div className="text-[10px] tracking-[0.3em] uppercase mb-8 text-white/50 border-b border-white/20 pb-4">Phase 02</div>
-                  <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 leading-[0.9]">DOM<br /><span className="italic opacity-80">Control.</span></h3>
+                  <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 leading-[0.9]">Style /<br /><span className="italic opacity-80">Tailwind.</span></h3>
                   <p className="text-xs md:text-sm tracking-[0.2em] uppercase leading-loose text-white/70">
-                    Precision control over the Document Object Model. Crafting raw JavaScript and modern hooks to bind state variables directly to physical pixel coordinates.
+                    Crafting pixel-perfect layouts at the speed of thought. I rely on Tailwind CSS to build custom, scalable design systems directly within my markup, eliminating massive CSS files.
                   </p>
                 </motion.div>
               </div>
             </div>
 
-            {/* Panel 3 */}
+            {/* Panel 3: React */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative border-r border-white/10 overflow-hidden bg-[#0a0a0a]">
               <GeometricOverlay light />
               <motion.div style={{ x: p3TextX }} className="absolute whitespace-nowrap z-0 opacity-[0.02]">
-                <h2 className="text-[25vw] font-light leading-[0.8] tracking-tighter uppercase">Hierarchy</h2>
+                <h2 className="text-[25vw] font-light leading-[0.8] tracking-tighter uppercase">REACT</h2>
               </motion.div>
 
               <div className="flex flex-col md:flex-row gap-12 items-center w-full max-w-[1400px] mx-auto z-10">
@@ -398,28 +398,28 @@ export function Home() {
                   <motion.h3
                     className="text-5xl md:text-7xl lg:text-8xl font-light uppercase tracking-tighter mb-8 leading-[0.9]"
                   >
-                    Component<br /><span className="italic opacity-80">Structure.</span>
+                    Logic /<br /><span className="italic opacity-80">React.</span>
                   </motion.h3>
                   <motion.p
                     className="text-xs md:text-sm tracking-[0.2em] uppercase leading-loose text-white/60 max-w-md border-l md:border-l-0 md:border-r border-white/20 pl-6 md:pl-0 md:pr-6"
                   >
-                    Building independent, reusable UI pieces. From foundational atoms to complex structural organisms. The rigid architecture of the web.
+                    Structuring interfaces into modular, highly reusable components. React empowers me to manage complex application states and side effects while keeping the user experience fluid.
                   </motion.p>
                 </div>
                 <motion.div style={{ y: p3ImageY }} className="w-full md:w-1/2 aspect-square md:h-[70vh] overflow-hidden relative group bg-white p-2">
                   <motion.img
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 1.5, ease: "easeOut" }}
-                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxab29tZWQlMjBjb2RlfGVufDF8fHx8MTc3MzQ2MTM3NHww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Architecture"
+                    src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFjdHxlbnwwfHx8fDE3MzQ1MTk4NzB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="React Architecture"
                     className="w-full h-full object-cover grayscale mix-blend-multiply opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                   />
-                  <div className="absolute bottom-6 left-6 text-[10px] tracking-widest uppercase bg-black text-white px-4 py-2">Blueprint</div>
+                  <div className="absolute bottom-6 left-6 text-[10px] tracking-widest uppercase bg-black text-white px-4 py-2">Component Tree</div>
                 </motion.div>
               </div>
             </div>
 
-            {/* Panel 4 */}
+            {/* Panel 4: TypeScript */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden bg-white text-black">
               <GeometricOverlay />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vh] h-[80vh] border border-black/5 rounded-full pointer-events-none"></div>
@@ -431,13 +431,13 @@ export function Home() {
                     <span className="w-8 h-[1px] bg-black/40"></span>
                     Phase 04
                   </div>
-                  <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-12">Performance<br /><span className="italic opacity-80">Ops.</span></h3>
+                  <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-12">Types /<br /><span className="italic opacity-80">TypeScript.</span></h3>
 
                   <ul className="space-y-6 w-full">
                     {[
-                      { num: "001", title: "Bundle Optimization", desc: "Code splitting and dynamic imports." },
-                      { num: "002", title: "WebGL Pipelines", desc: "GPU-accelerated rendering layers." },
-                      { num: "003", title: "Virtual DOM", desc: "Diffing algorithms & state batching." },
+                      { num: "001", title: "Strict Typing", desc: "Catching logic errors before compilation." },
+                      { num: "002", title: "Interfaces", desc: "Defining clear, predictable data structures." },
+                      { num: "003", title: "Scalability", desc: "Writing maintainable code for enterprise apps." },
                     ].map((item, idx) => (
                       <li key={idx} className="flex flex-col group border-b border-black/10 pb-4 hover:border-black transition-colors cursor-default">
                         <div className="flex items-baseline justify-between w-full">
@@ -458,26 +458,26 @@ export function Home() {
                 <div className="w-full md:w-5/12 relative h-[50vh] md:h-[70vh]">
                   <motion.div style={{ scale: p4ImageScale }} className="absolute top-0 right-0 w-4/5 h-3/4 overflow-hidden bg-black p-2 z-10 shadow-2xl">
                     <img
-                      src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlciUyMHNlY3VyaXR5fGVufDF8fHx8MTc3MzQ2MTM3NHww&ixlib=rb-4.1.0&q=80&w=800"
+                      src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE3MzQ1MTk4NzB8MA&ixlib=rb-4.1.0&q=80&w=800"
                       className="w-full h-full object-cover grayscale opacity-80"
-                      alt="System Reference"
+                      alt="TypeScript Typing Reference"
                     />
                   </motion.div>
                   <motion.div style={{ scale: p4ImageScale }} className="absolute bottom-0 left-0 w-3/5 h-2/3 overflow-hidden bg-black p-2 z-20 shadow-2xl">
                     <img
-                      src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYWNrZXIlMjBjb2RlfGVufDF8fHx8MTc3MzQ2MTM3NHww&ixlib=rb-4.1.0&q=80&w=800"
+                      src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2Rpbmd8ZW58MHx8fHwxNzM0NTE5ODcwfDA&ixlib=rb-4.1.0&q=80&w=800"
                       className="w-full h-full object-cover grayscale opacity-80"
-                      alt="Operations Reference"
+                      alt="TypeScript Editor"
                     />
                   </motion.div>
                 </div>
               </div>
             </div>
 
-            {/* Panel 5 */}
+            {/* Panel 5: Framer Motion */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden bg-[#050505] text-white">
               <GeometricOverlay light />
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RlfGVufDF8fHx8MTc3MzQ2MTM3NHww&ixlib=rb-4.1.0&q=80&w=1920')] bg-cover opacity-10 grayscale mix-blend-screen pointer-events-none"></div>
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1604871000636-074fa5117945?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGFydHxlbnwwfHx8fDE3MzQ1MTk4NzB8MA&ixlib=rb-4.1.0&q=80&w=1920')] bg-cover opacity-10 grayscale mix-blend-screen pointer-events-none"></div>
               <div className="flex flex-col items-center justify-center text-center z-10 w-full max-w-[1000px] mx-auto">
                 <motion.div style={{ y: p5TextY, opacity: p5TextOpacity }}>
                   <div className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-6 flex items-center justify-center gap-4">
@@ -486,10 +486,10 @@ export function Home() {
                     <span className="w-8 h-[1px] bg-white/40"></span>
                   </div>
                   <h3 className="text-5xl md:text-8xl font-light uppercase tracking-tighter mb-8 leading-[0.9]">
-                    Physics<br /><span className="italic opacity-80">Engine.</span>
+                    Motion /<br /><span className="italic opacity-80">Framer.</span>
                   </h3>
                   <p className="text-sm md:text-base tracking-[0.2em] uppercase leading-loose text-white/60">
-                    Implementing spring dynamics and velocity-based animations. Moving away from rigid easing curves to fluid, continuous interaction models.
+                    Breathing life into static DOM elements. I leverage Framer Motion to orchestrate fluid spring animations, complex scroll effects, and immersive page transitions that feel natural.
                   </p>
                 </motion.div>
               </div>
@@ -499,15 +499,15 @@ export function Home() {
         </div>
       </section>
 
-      {/* Horizontal Scroll Section 2 (Rightwards / Reverse) */}
+      {/* Horizontal Scroll Section 2 (Rightwards / Reverse) - THE WORKFLOW */}
       <section ref={reverseScrollRef} className="relative h-[500vh] bg-black text-white border-t border-white/20">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
           <motion.div style={{ x: reverseX }} className="flex h-full w-[500vw] flex-row-reverse will-change-transform">
 
-            {/* Reverse Panel 1: Data Architecture */}
+            {/* Reverse Panel 1: Research */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden bg-white text-black border-l border-black/10">
               <GeometricOverlay />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-light text-black/[0.03] z-0 pointer-events-none uppercase tracking-tighter">DATA</div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-light text-black/[0.03] z-0 pointer-events-none uppercase tracking-tighter">IDEATE</div>
               <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row gap-12 lg:gap-24 items-center relative z-10">
                 <div className="w-full md:w-1/2">
                   <motion.div style={{ y: rp1TextY, opacity: rp1Opacity }}>
@@ -515,9 +515,9 @@ export function Home() {
                       <span className="w-8 h-[1px] bg-black/40"></span>
                       Phase 06
                     </div>
-                    <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 leading-[0.9]">Data<br /><span className="italic opacity-80">Architecture.</span></h3>
+                    <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 leading-[0.9]">Research /<br /><span className="italic opacity-80">Ideation.</span></h3>
                     <p className="text-xs md:text-sm tracking-[0.2em] uppercase leading-loose text-black/70 max-w-md">
-                      Designing normalized state shapes and memoized selectors. Ensuring predictable renders through immutable data structures.
+                      Every successful digital experience begins with deep research. I map out the core vision, analyze the target audience, and define the user journey before I ever touch a design tool.
                     </p>
                   </motion.div>
                 </div>
@@ -529,7 +529,7 @@ export function Home() {
               </div>
             </div>
 
-            {/* Reverse Panel 2: WebGL Rendering */}
+            {/* Reverse Panel 2: Figma / Adobe XD */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden bg-[#050505] text-white border-l border-white/10">
               <GeometricOverlay light />
               <div className="w-full max-w-[1400px] mx-auto z-10 flex flex-col items-center justify-center relative h-full">
@@ -542,32 +542,32 @@ export function Home() {
                     Phase 07
                   </div>
                   <h3 className="text-5xl md:text-8xl font-light uppercase tracking-tighter mb-8 leading-[0.9]">
-                    WebGL<br /><span className="italic opacity-80">Pipelines.</span>
+                    Visual /<br /><span className="italic opacity-80">Prototyping.</span>
                   </h3>
                   <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-white/60 max-w-lg mx-auto leading-loose">
-                    Bypassing the DOM to render complex geometric structures directly on the GPU. Fragment shaders and buffer management.
+                    Once the strategy is clear, I bring the vision to life visually. Using Figma and Adobe XD, I build high-fidelity prototypes to perfect the layout, typography, and interactive states.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Reverse Panel 3: Retro Futurism */}
+            {/* Reverse Panel 3: Architecture Setup */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden border-l border-white/10 bg-[#111]">
               <GeometricOverlay light />
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXRybyUyMGNvbXB1dGVyfGVufDF8fHx8MTc3MzQ2MTM3NHww&ixlib=rb-4.1.0&q=80&w=1920')] bg-cover bg-center opacity-10 mix-blend-screen grayscale"></div>
               <motion.div style={{ x: rp3TextX }} className="w-full max-w-[1400px] mx-auto z-10 flex flex-col items-center text-center">
                 <div className="text-[10px] tracking-[0.4em] uppercase text-white/50 mb-6">Phase 08</div>
                 <h3 className="text-4xl md:text-8xl font-light uppercase tracking-tighter leading-[0.85] mb-8">
-                  Retro<br />
-                  <span className="italic opacity-80">Futurism.</span>
+                  System /<br />
+                  <span className="italic opacity-80">Architecture.</span>
                 </h3>
                 <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-white/50 max-w-lg leading-loose border-t border-white/20 pt-8 mt-8">
-                  Bridging the gap between nostalgic CRT interfaces and modern WebGL pipelines. Acknowledging the past while building the future.
+                  Bridging the gap between design and development requires a solid blueprint. I set up the technical architecture, configuring my Next.js environment and laying down modular structural foundations.
                 </p>
               </motion.div>
             </div>
 
-            {/* Reverse Panel 4: Motion Dynamics */}
+            {/* Reverse Panel 4: Writing the Code */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden bg-white text-black border-l border-black/10">
               <GeometricOverlay />
               <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row-reverse gap-12 md:gap-24 items-center">
@@ -576,10 +576,10 @@ export function Home() {
                     <span className="w-8 h-[1px] bg-black/40"></span>
                     Phase 09
                   </div>
-                  <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 leading-none">Motion<br /><span className="italic opacity-80">Dynamics.</span></h3>
+                  <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 leading-none">Component /<br /><span className="italic opacity-80">Engineering.</span></h3>
                   <div className="w-16 h-[2px] bg-black mb-6"></div>
                   <p className="text-xs md:text-sm tracking-[0.2em] uppercase leading-loose text-black/70">
-                    Fluid animation systems that respect physics. Every transition is calculated using spring physics rather than linear timing curves, resulting in natural, tactile interactions.
+                    This is where I dive into the actual code. I translate those static prototypes into high-performance React components, injecting Framer Motion and logical hooks for fluid interactions.
                   </p>
                 </div>
                 <div className="w-full md:w-1/2 aspect-square relative group">
@@ -593,11 +593,11 @@ export function Home() {
               </div>
             </div>
 
-            {/* Reverse Panel 5: Aesthetic Output */}
+            {/* Reverse Panel 5: The Launch */}
             <div className="w-screen h-full flex items-center justify-center p-6 md:p-12 lg:p-24 relative overflow-hidden bg-[#050505] text-white border-l border-white/10">
               <GeometricOverlay light />
               <div className="absolute top-0 right-0 w-full h-full flex items-center justify-end pointer-events-none opacity-5">
-                <h2 className="text-[30vw] font-bold tracking-tighter leading-none whitespace-nowrap">AESTHETIC</h2>
+                <h2 className="text-[30vw] font-bold tracking-tighter leading-none whitespace-nowrap">LAUNCH</h2>
               </div>
               <div className="w-full max-w-[1400px] mx-auto z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <motion.div style={{ scale: rp5Scale }} className="aspect-[3/4] overflow-hidden group border border-white/10 p-2 bg-[#111]">
@@ -613,11 +613,11 @@ export function Home() {
                     Phase 10
                   </div>
                   <h3 className="text-4xl md:text-6xl lg:text-8xl font-light uppercase tracking-tighter mb-8">
-                    Monochrome<br />
-                    <span className="italic opacity-80">Brutalism.</span>
+                    Polish /<br />
+                    <span className="italic opacity-80">Launch.</span>
                   </h3>
                   <p className="text-xs tracking-[0.2em] uppercase leading-loose text-white/60 pl-6 border-l border-white/20">
-                    A rejection of superficial design trends in favor of raw, unpolished utility. The interface is not just a container for content; it is the content itself.
+                    The final 10% is all about polish. I optimize bundle sizes, refine the accessibility, and finally deploy. Watching a project transform from a brainstorm to a live interface never gets old.
                   </p>
                 </div>
               </div>
