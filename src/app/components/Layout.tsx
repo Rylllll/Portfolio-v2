@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { CustomCursor } from "./CustomCursor";
 import { ArrowRight, Loader2, Check } from "lucide-react";
 import { GlobalNavigationTracker } from "./GlobalNavigationTracker";
+import ScrollToTop from "./ScrollToTop";
 
 const menuLinks = [
   { name: "Home", path: "/", image: "https://images.unsplash.com/photo-1769283991436-9ce2354aaaf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBicnV0YWxpc3QlMjBhcmNoaXRlY3R1cmUlMjBjb25jcmV0ZXxlbnwxfHx8fDE3NzM0MTc4ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080" },
@@ -67,7 +68,7 @@ export function Layout() {
     <div className="min-h-screen bg-[#F5F5F5] text-black font-sans selection:bg-black selection:text-white cursor-none relative">
       <CustomCursor />
       <GlobalNavigationTracker />
-      
+      <ScrollToTop />
       {/* Navbar Header */}
       <motion.header 
         initial={{ y: -50, opacity: 0 }}
