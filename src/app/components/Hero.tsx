@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, MouseEvent } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
-import { Mail, ArrowUpRight, Star } from "lucide-react";
+import { Mail, ArrowUpRight, Star, Hexagon } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const MagneticLink = ({ children, className, href, ...props }: any) => {
@@ -43,6 +43,23 @@ const FloatingShape = ({ delay = 0, className, children }: any) => (
     {children}
   </motion.div>
 );
+
+// New Interactive Draggable 3D Object Component
+const Draggable3DObject = ({ children, top, left, right, bottom, zIndex = "z-30", rotation = 0 }: any) => {
+  return (
+    <motion.div
+      drag
+      dragElastic={0.2}
+      whileDrag={{ scale: 1.15, zIndex: 100, rotate: rotation + 15, cursor: "grabbing" }}
+      whileHover={{ scale: 1.05, cursor: "grab" }}
+      initial={{ rotate: rotation }}
+      className={`absolute ${zIndex} touch-none hidden md:block`}
+      style={{ top, left, right, bottom }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -92,9 +109,30 @@ export const Hero = () => {
     <section
       id="Hero"
       ref={containerRef}
-      className="relative w-full min-h-[100dvh] pt-32 pb-20 bg-background border-b-[4px] border-foreground flex flex-col justify-center z-10 overflow-hidden transition-colors"
+      className="relative w-full min-h-[100dvh] pt-24 pb-16 bg-background border-b-[4px] border-foreground flex flex-col justify-center z-10 overflow-hidden transition-colors"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 z-20 relative items-center max-w-6xl mx-auto w-full px-6 md:px-10">
+      {/* Draggable 3D Scene Elements */}
+      <Draggable3DObject top="15%" right="8%" rotation={15} zIndex="z-10">
+        <div className="w-24 h-24 bg-[#FFB074] rounded-[20px] border-[3px] border-foreground shadow-[6px_6px_0px_0px_var(--color-foreground)] flex items-center justify-center">
+           <Star className="text-foreground fill-foreground w-10 h-10" />
+        </div>
+      </Draggable3DObject>
+
+      <Draggable3DObject bottom="20%" left="5%" rotation={-12} zIndex="z-40">
+        <div className="w-20 h-20 bg-[#D3B8FE] rounded-full border-[3px] border-foreground shadow-[inset_-8px_-8px_0px_rgba(0,0,0,0.1),6px_6px_0px_0px_var(--color-foreground)] flex items-center justify-center" />
+      </Draggable3DObject>
+
+      <Draggable3DObject top="25%" left="45%" rotation={-5} zIndex="z-10">
+        <div className="w-16 h-16 bg-[#A3F1B6] border-[3px] border-foreground shadow-[4px_4px_0px_0px_var(--color-foreground)] flex items-center justify-center">
+           <Hexagon className="text-foreground fill-foreground w-8 h-8" />
+        </div>
+      </Draggable3DObject>
+
+      <Draggable3DObject bottom="30%" right="40%" rotation={25} zIndex="z-40">
+        <div className="w-32 h-10 bg-white dark:bg-zinc-800 rounded-full border-[3px] border-foreground shadow-[4px_4px_0px_0px_var(--color-foreground)]" />
+      </Draggable3DObject>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 z-20 relative items-center max-w-6xl mx-auto w-full px-6 md:px-10 h-full max-h-[800px]">
         
         <div className="col-span-1 lg:col-span-7 flex flex-col justify-center gap-4 relative z-20">
           <motion.div
@@ -106,7 +144,7 @@ export const Hero = () => {
               <Star className="w-8 h-8 md:w-12 md:h-12 fill-current stroke-foreground stroke-[2px] md:stroke-[3px] drop-shadow-[3px_3px_0_var(--color-foreground)]" />
             </FloatingShape>
 
-            <div className="relative z-30">
+            <div className="relative z-30 pointer-events-none">
               <motion.h1
                 variants={{
                   hidden: { y: -100, opacity: 0, rotateZ: -10, scale: 0.9 },
@@ -119,7 +157,7 @@ export const Hero = () => {
               </motion.h1>
             </div>
 
-            <div className="relative z-20 self-start">
+            <div className="relative z-20 self-start pointer-events-none">
               <motion.div
                 variants={{
                   hidden: { y: -100, opacity: 0, rotateZ: 15, scale: 0.9 },
@@ -132,7 +170,7 @@ export const Hero = () => {
               </motion.div>
             </div>
 
-            <div className="relative z-10">
+            <div className="relative z-10 pointer-events-none">
               <motion.h1
                 variants={{
                   hidden: { y: -100, opacity: 0, rotateZ: -8, scale: 0.9 },
@@ -157,13 +195,13 @@ export const Hero = () => {
               interactions.
             </p>
             <div className="flex flex-wrap gap-3 pt-1">
-              <MagneticLink href="#Projects" className="bg-foreground text-background px-5 py-2.5 rounded-[12px] border-[2px] border-foreground flex items-center gap-2 font-bold uppercase text-xs tracking-widest shadow-[3px_3px_0px_0px_var(--color-foreground)] hover:shadow-[5px_5px_0px_0px_var(--color-foreground)] hover:-translate-y-1 transition-all group">
+              <MagneticLink href="#Projects" className="bg-foreground text-background px-5 py-2.5 rounded-[12px] border-[2px] border-foreground flex items-center gap-2 font-bold uppercase text-xs tracking-widest shadow-[3px_3px_0px_0px_var(--color-foreground)] hover:shadow-[5px_5px_0px_0px_var(--color-foreground)] hover:-translate-y-1 transition-all group z-30">
                 View Work
                 <motion.div className="bg-background/20 p-1 rounded-full text-background" whileHover={{ rotate: 45 }}>
                   <ArrowUpRight className="w-3 h-3" />
                 </motion.div>
               </MagneticLink>
-              <MagneticLink href="#Contact" className="bg-background text-foreground px-5 py-2.5 rounded-[12px] border-[2px] border-foreground flex items-center gap-2 font-bold uppercase text-xs tracking-widest shadow-[3px_3px_0px_0px_var(--color-foreground)] hover:shadow-[5px_5px_0px_0px_var(--color-foreground)] hover:-translate-y-1 transition-all group">
+              <MagneticLink href="#Contact" className="bg-background text-foreground px-5 py-2.5 rounded-[12px] border-[2px] border-foreground flex items-center gap-2 font-bold uppercase text-xs tracking-widest shadow-[3px_3px_0px_0px_var(--color-foreground)] hover:shadow-[5px_5px_0px_0px_var(--color-foreground)] hover:-translate-y-1 transition-all group z-30">
                 Email Me
                 <Mail className="w-3 h-3 group-hover:-rotate-12 transition-transform" />
               </MagneticLink>
@@ -176,10 +214,10 @@ export const Hero = () => {
           animate={{ opacity: 1, x: 0, rotate: 0 }}
           transition={{ delay: 0.8, type: "spring", bounce: 0.5 }}
           style={{ y: yImage }}
-          className="col-span-1 lg:col-span-5 w-full h-[300px] sm:h-[400px] lg:h-[500px] mt-8 lg:mt-0 relative z-10 flex items-center"
+          className="col-span-1 lg:col-span-5 w-full h-[250px] sm:h-[300px] lg:h-[450px] mt-4 lg:mt-0 relative z-20 flex items-center"
         >
           <div className="w-full h-full bg-[#FFE392] dark:bg-[#e1cf9b] rounded-[24px] md:rounded-[32px] border-[3px] md:border-[4px] border-foreground shadow-[8px_8px_0px_0px_var(--color-foreground)] overflow-hidden relative group cursor-pointer">
-            <ImageWithFallback src="/images/profile.png" alt="Profile avatar" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+            <ImageWithFallback src="/images/profile.png" alt="Profile avatar" className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none" />
             <motion.div whileHover={{ scale: 1.05 }} className="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-3 py-1.5 border-[2px] border-foreground rounded-full shadow-[3px_3px_0px_0px_var(--color-foreground)] font-bold text-[10px] md:text-xs z-10 flex items-center gap-2 text-foreground">
               <span className="w-2 h-2 rounded-full bg-[#A3F1B6] border border-foreground animate-pulse" />
               Available for work
@@ -188,6 +226,7 @@ export const Hero = () => {
         </motion.div>
       </div>
 
+      {/* Marquee Footer pinned to bottom */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden border-t-[3px] border-foreground bg-background py-1.5 z-30 flex whitespace-nowrap shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)] pointer-events-none text-foreground">
         <motion.div animate={{ x: [0, -1000] }} transition={{ repeat: Infinity, ease: "linear", duration: 15 }} className="flex gap-4 md:gap-6 items-center">
           {[...Array(12)].map((_, i) => (
