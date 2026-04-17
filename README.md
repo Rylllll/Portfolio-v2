@@ -1,7 +1,7 @@
 
-  # Portfolio website with animations
+  # Personal Portfolio Design
 
-  This is a code bundle for Portfolio website with animations. The original project is available at https://www.figma.com/design/pkwuzHNaI9KeC6Z4rhCxh2/Portfolio-website-with-animations.
+  This is a code bundle for Personal Portfolio Design. The original project is available at https://www.figma.com/design/HGDKTV277MjZq4Klwfi5z3/Personal-Portfolio-Design.
 
   ## Running the code
 

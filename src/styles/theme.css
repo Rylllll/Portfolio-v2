@@ -79,6 +79,8 @@
 }
 
 @theme inline {
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-display: 'Big Shoulders Display', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -124,10 +126,9 @@
     @apply border-border outline-ring/50;
   }
 
-  html, body {
+  body {
     @apply bg-background text-foreground;
     position: relative;
-    min-height: 100vh;
   }
 
   /**
@@ -137,6 +138,7 @@
 
   html {
     font-size: var(--font-size);
+    position: relative;
   }
 
   h1 {
