@@ -1,7 +1,7 @@
 
-  # Personal Portfolio Design
+  # Copy Navbar Design to Footer
 
-  This is a code bundle for Personal Portfolio Design. The original project is available at https://www.figma.com/design/HGDKTV277MjZq4Klwfi5z3/Personal-Portfolio-Design.
+  This is a code bundle for Copy Navbar Design to Footer. The original project is available at https://www.figma.com/design/azADmuata7DW8ahooCGTIv/Copy-Navbar-Design-to-Footer.
 
   ## Running the code
 

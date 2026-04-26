@@ -1,54 +1,39 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Loader } from './components/Loader';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { TechStack } from './components/TechStack';
-import { Projects } from './components/Projects';
-import { Hobbies } from './components/Hobbies'; 
-import { Resume } from './components/Resume';   
-import { Contact } from './components/Contact';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "motion/react";
+import { Sidebar } from "./components/Sidebar";
+import { Hero } from "./components/Hero";
+import { About } from "./components/About";
+import { Experience } from "./components/Experience";
+import { Work } from "./components/Work";
+import { Services } from "./components/Services";
+import { Tools } from "./components/Tools";
+import { Testimonials } from "./components/Testimonials";
+import { Contact } from "./components/Contact";
 
 export default function App() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
-
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {isLoading && (
-          <Loader key="app-loader" onComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
-
-      <div 
-        ref={containerRef} 
-        className={`relative min-h-screen bg-[#E5D7B7] text-[#000000] font-body selection:bg-[#BCA9F5] selection:text-black flex flex-col ${
-          isLoading ? 'h-screen overflow-hidden' : 'overflow-x-clip'
-        }`}
-      >
-        <Navbar />
-        <main className="w-full">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-[#fafafa] font-sans text-[#111]">
+      <div className="lg:w-[320px] xl:w-[380px] p-4 lg:p-6 lg:fixed lg:h-screen z-50">
+        <Sidebar />
+      </div>
+      <div className="flex-1 lg:ml-[320px] xl:ml-[380px] relative">
+        <div className="max-w-4xl mx-auto px-6 py-12 lg:py-24 space-y-32">
           <Hero />
           <About />
-          <TechStack />
-          <Projects />
-          <Hobbies />
-          <Resume />
+          <Experience />
+          <Work />
+          <Services />
+          <Tools />
+          <Testimonials />
           <Contact />
-        </main>
+        </div>
+        
+        {/* Right fixed navigation dots */}
+        <div className="hidden xl:flex fixed right-8 top-1/2 -translate-y-1/2 flex-col gap-4">
+          {[...Array(8)].map((_, i) => (
+            <div key={i} className="w-2 h-2 rounded-full border border-gray-300 bg-transparent cursor-pointer hover:bg-black transition-colors" />
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
