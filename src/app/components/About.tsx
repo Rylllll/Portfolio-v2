@@ -32,7 +32,7 @@ export function About() {
             I combine web design, brand identity, and no-code development to help businesses move faster while staying true to their personality.
           </p>
           <p>
-            Every project is approached with both strategy and style - making sure things not just good looking, but also purposeful and effective.
+            Every project is approached with both strategy and style - making sure things are not just good-looking, but also purposeful and effective.
           </p>
         </div>
       </motion.div>
