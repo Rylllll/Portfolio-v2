@@ -45,12 +45,12 @@ export function Sidebar() {
         </div>
 
         <div className="flex items-center justify-between gap-4">
-          <button className="bg-white text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors w-full">
+          <a href="#contact" className="bg-white text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors w-full text-center">
             Let's talk
-          </button>
-          <button className="flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-colors px-4 py-3 border border-white/10 rounded-full w-full justify-center">
-            Download CV
-          </button>
+          </a>
+          <a href="mailto:hello@reymark.design" className="flex items-center gap-2 text-gray-400 text-sm hover:text-white transition-colors px-4 py-3 border border-white/10 rounded-full w-full justify-center">
+            Email me
+          </a>
         </div>
       </div>
     </motion.div>
